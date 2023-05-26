@@ -21,6 +21,25 @@
 
 const std::string WHITESPACE = " \n\r\t\f\v";
 
+static const char* vendor_name(iware::gpu::vendor_t vendor) noexcept {
+    switch(vendor) {
+        case iware::gpu::vendor_t::intel:
+            return "Intel";
+        case iware::gpu::vendor_t::amd:
+            return "AMD";
+        case iware::gpu::vendor_t::nvidia:
+            return "NVidia";
+        case iware::gpu::vendor_t::microsoft:
+            return "Microsoft";
+        case iware::gpu::vendor_t::qualcomm:
+            return "Qualcomm";
+        case iware::gpu::vendor_t::apple:
+            return "Apple";
+        default:
+            return "Unknown";
+    }
+}
+
 std::string ltrim(const std::string &s)
 {
     size_t start = s.find_first_not_of(WHITESPACE);
@@ -43,17 +62,27 @@ void printInfo(){
                       NULL,
                       NULL,
                       (PULARGE_INTEGER)&Storage);
-
-
     const auto OS_info = iware::system::OS_info();
     const auto memory = iware::system::memory();
     const auto device_properties = iware::gpu::device_properties();
 
     const auto& properties_of_device = device_properties[0];
 
-    std::string gpu_name = properties_of_device.name;
-    gpu_name = gpu_name.substr(gpu_name.find('[') + 1, gpu_name.find('M', gpu_name.find('[')) - gpu_name.find('[') - 1);
+    std::string gpu_name ;
 
+
+    {
+        const auto device_properties = iware::gpu::device_properties();
+
+            for (auto i = 0u; i < device_properties.size(); ++i) {
+                const auto &properties_of_device = device_properties[i];
+
+                if (vendor_name(properties_of_device.vendor) == "NVidia")
+                    gpu_name = properties_of_device.name;
+            }
+
+    }
+    gpu_name = gpu_name.substr(gpu_name.find('[') + 1, gpu_name.find('M', gpu_name.find('[')) - gpu_name.find('[') - 1);
 
 
 
@@ -63,8 +92,9 @@ void printInfo(){
               << "Memory: " << (memory.physical_total >> 30) << " GB RAM\n"
               << "Graphics: " << gpu_name << " \n"
               << "Storage: " << (Storage >> 30) << " GB\n";
-
 }
+
+
 void compareInfo(char * filename){
 
     unsigned __int64 Storage;
@@ -80,19 +110,31 @@ void compareInfo(char * filename){
 
     const auto& properties_of_device = device_properties[0];
     std::string gpu_name = properties_of_device.name;
+    {
+        const auto device_properties = iware::gpu::device_properties();
+
+        for (auto i = 0u; i < device_properties.size(); ++i) {
+            const auto &properties_of_device = device_properties[i];
+
+            if (vendor_name(properties_of_device.vendor) == "NVidia")
+                gpu_name = properties_of_device.name;
+        }
+
+    }
     gpu_name = gpu_name.substr(gpu_name.find('[') + 1, gpu_name.find('M', gpu_name.find('[')) - gpu_name.find('[') - 1);
 
     std::ifstream in(filename);
+    if(!in.good()){
+        std::cout << "Cannot open the file\n";
+        return;
+    }
     std::string str;
 
     while(in >> str){
-        //std::cout << str << "\n";
-
         if(str == "OS:"){
             std::getline(in, str);
             str = str.substr(str.find("Windows") + 8);
             int game_version = std::stoi(str);
-
 
             std::string OS_name = OS_info.full_name;
             OS_name = (OS_name.substr(OS_name.find(' ') + 1));
@@ -105,10 +147,14 @@ void compareInfo(char * filename){
                 in.close();
                 return;
             }
-
         }
         else if(str == "Processor:"){
             std::ifstream cpu("../cpu.info");
+            if(!cpu.good()){
+                std::cout << "Cannot open the file with cpu ranked\n";
+                in.close();
+                return;
+            }
             std::string cpu_model;
 
             std::string game_cpu1, game_cpu2 ="";
@@ -142,7 +188,7 @@ void compareInfo(char * filename){
                 }
                 if(cpu_model.find(game_cpu1) != -1 || game_cpu1.find(cpu_model) != -1){
                     std::cout << "Problem with CPU:\n";
-                    std::cout << "Game reuires CPU: " << game_cpu1 << "\n";
+                    std::cout << "Game requires CPU: " << game_cpu1 << "\n";
                     std::cout << "Your CPU: " << self_cpu << "\n";
                     cpu.close();
                     in.close();
@@ -150,14 +196,13 @@ void compareInfo(char * filename){
                 }
                 if(game_cpu2!="" && cpu_model.find(game_cpu2) != -1 || game_cpu2.find(cpu_model) != -1){
                     std::cout << "Problem with CPU:\n";
-                    std::cout << "Game reuires CPU: " << game_cpu2 << "\n";
+                    std::cout << "Game requires CPU: " << game_cpu2 << "\n";
                     std::cout << "Your CPU: " << self_cpu << "\n";
                     cpu.close();
                     in.close();
                     return;
                 }
             }
-
         }
         else if(str == "Memory:"){
             int game_memory;
@@ -174,6 +219,10 @@ void compareInfo(char * filename){
         }
         else if(str == "Graphics:"){
             std::ifstream gpu("../gpu.info");
+            if(!gpu.good()){
+                std::cout << "Cannot open the file with gpu ranked\n";
+                return;
+            }
             std::string gpu_model;
 
             std::string game_gpu1, game_gpu2 ="";
@@ -216,7 +265,7 @@ void compareInfo(char * filename){
                 }
                 if(game_gpu2 != "" && (gpu_model.find(game_gpu2) != -1 || game_gpu2.find(gpu_model) != -1)){
                     std::cout << "Problem with GPU:\n";
-                    std::cout << "Game reuires GPU: " << game_gpu2 << "\n";
+                    std::cout << "Game requires GPU: " << game_gpu2 << "\n";
                     std::cout << "Your GPU: " << self_gpu << "\n";
                     gpu.close();
                     in.close();
