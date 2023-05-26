@@ -1,0 +1,102 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"infoware/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 234,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 248,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 255,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"infoware/lib/libinfowared.a"
+			],
+			"targetId" : "infoware::@30d23954075b6ea4e56c",
+			"targetIndex" : 1,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "include/infoware",
+			"paths" : 
+			[
+				"infoware/include/infoware/cpu.hpp",
+				"infoware/include/infoware/gpu.hpp",
+				"infoware/include/infoware/infoware.hpp",
+				"infoware/include/infoware/linkage.hpp",
+				"infoware/include/infoware/pci.hpp",
+				"infoware/include/infoware/platform.hpp",
+				"infoware/include/infoware/system.hpp",
+				"infoware/include/infoware/version.hpp"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "devel",
+			"destination" : "share/infoware",
+			"paths" : 
+			[
+				"cmake-build-debug/infoware/cmake/infowareConfigVersion.cmake"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "share/infoware",
+			"exportName" : "infowareTargets",
+			"exportTargets" : 
+			[
+				{
+					"id" : "infoware::@30d23954075b6ea4e56c",
+					"index" : 1
+				}
+			],
+			"paths" : 
+			[
+				"infoware/CMakeFiles/Export/9406fe375034fbeaa3aba5af8b3d6b51/infowareConfig.cmake"
+			],
+			"type" : "export"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "infoware",
+		"source" : "infoware"
+	}
+}

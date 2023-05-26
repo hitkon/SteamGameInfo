@@ -1,0 +1,16 @@
+C:/Users/ivanz/uni/CppLabs/SysInfo/cmake-build-debug/CMakeFiles/SysInfo.dir
+C:/Users/ivanz/uni/CppLabs/SysInfo/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/ivanz/uni/CppLabs/SysInfo/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/ivanz/uni/CppLabs/SysInfo/cmake-build-debug/CMakeFiles/list_install_components.dir
+C:/Users/ivanz/uni/CppLabs/SysInfo/cmake-build-debug/CMakeFiles/install.dir
+C:/Users/ivanz/uni/CppLabs/SysInfo/cmake-build-debug/CMakeFiles/install/local.dir
+C:/Users/ivanz/uni/CppLabs/SysInfo/cmake-build-debug/CMakeFiles/install/strip.dir
+C:/Users/ivanz/uni/CppLabs/SysInfo/cmake-build-debug/infoware/CMakeFiles/infoware.dir
+C:/Users/ivanz/uni/CppLabs/SysInfo/cmake-build-debug/infoware/CMakeFiles/infoware_pci_generator.dir
+C:/Users/ivanz/uni/CppLabs/SysInfo/cmake-build-debug/infoware/CMakeFiles/infoware_generate_pcis.dir
+C:/Users/ivanz/uni/CppLabs/SysInfo/cmake-build-debug/infoware/CMakeFiles/edit_cache.dir
+C:/Users/ivanz/uni/CppLabs/SysInfo/cmake-build-debug/infoware/CMakeFiles/rebuild_cache.dir
+C:/Users/ivanz/uni/CppLabs/SysInfo/cmake-build-debug/infoware/CMakeFiles/list_install_components.dir
+C:/Users/ivanz/uni/CppLabs/SysInfo/cmake-build-debug/infoware/CMakeFiles/install.dir
+C:/Users/ivanz/uni/CppLabs/SysInfo/cmake-build-debug/infoware/CMakeFiles/install/local.dir
+C:/Users/ivanz/uni/CppLabs/SysInfo/cmake-build-debug/infoware/CMakeFiles/install/strip.dir

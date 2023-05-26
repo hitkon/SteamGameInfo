@@ -1,0 +1,122 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.24"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "infoware",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-infoware-Debug-d53f6738b001883ffaff.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "infoware",
+					"targetIndexes" : 
+					[
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "SysInfo",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "infoware",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "SysInfo::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-SysInfo-Debug-a3dc6b8676eeb5bd98ed.json",
+					"name" : "SysInfo",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "infoware::@30d23954075b6ea4e56c",
+					"jsonFile" : "target-infoware-Debug-8c39236700c78a4876c8.json",
+					"name" : "infoware",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "infoware_generate_pcis::@30d23954075b6ea4e56c",
+					"jsonFile" : "target-infoware_generate_pcis-Debug-bc1cb72af740b2495024.json",
+					"name" : "infoware_generate_pcis",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "infoware_pci_generator::@30d23954075b6ea4e56c",
+					"jsonFile" : "target-infoware_pci_generator-Debug-187a882c2f4df6041419.json",
+					"name" : "infoware_pci_generator",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/ivanz/uni/CppLabs/SysInfo/cmake-build-debug",
+		"source" : "C:/Users/ivanz/uni/CppLabs/SysInfo"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}
